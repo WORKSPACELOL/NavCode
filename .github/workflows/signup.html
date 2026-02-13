@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sign Up - NAVCODE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('WEB BG.png') center/cover no-repeat fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        .container {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            color: white;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .left-panel h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .left-panel p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .right-panel {
+            padding: 60px 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-panel h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #1da1c4;
+            box-shadow: 0 0 0 3px rgba(29, 161, 196, 0.1);
+        }
+
+        input:invalid {
+            border-color: #e74c3c;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            align-self: center;
+            min-width: 180px;
+        }
+
+        button:hover {
+            background: white;
+            color: #1da1c4;
+            box-shadow: 0 6px 16px rgba(29, 161, 196, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-inputs {
+            position: relative;
+        }
+
+        .password-inputs input[type="text"] {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .password-field:has(#show-password:checked) input[type="password"] {
+            display: none;
+        }
+
+        .password-field:has(#show-password:checked) input[type="text"] {
+            display: block;
+        }
+
+        .show-password-container {
+            margin-top: 10px;
+            display: flex !important;
+            align-items: center;
+            visibility: visible !important;
+        }
+
+        .show-password-container label {
+            font-size: 12px;
+            color: #666;
+            text-transform: none;
+            font-weight: normal;
+            margin: 0;
+            cursor: pointer;
+            margin-top: 0;
+            margin-bottom: 0;
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        .show-password-checkbox {
+            width: 18px !important;
+            height: 18px !important;
+            padding: 0 !important;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #1da1c4;
+            border: 2px solid #ddd !important;
+            border-radius: 4px !important;
+            background-color: white !important;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #1da1c4;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #16a085;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                min-width: 100%;
+                padding: 40px 30px;
+            }
+
+            .right-panel {
+                padding: 40px 30px;
+            }
+
+            .left-panel h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                border-radius: 8px;
+            }
+
+            .left-panel {
+                padding: 30px 20px;
+            }
+
+            .right-panel {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 20px;
+            }
+
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+
+            button {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo">
+                <img src="badge.png" alt="NavCode Logo">
+            </div>
+            <h2>NavCode</h2>
+            <p>Start your coding journey with confidence. Learn programming through fun and interactive games designed for students.</p>
+        </div>
+        <div class="right-panel">
+            <h1>Create Account</h1>
+            <p class="subtitle">Join NavCode and begin your coding adventure</p>
+            <form id="signup-form" onsubmit="handleSignup(event)">
+                <label for="username">USERNAME</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" minlength="8" maxlength="12" required>
+
+                <label for="email">E-MAIL</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">PASSWORD</label>
+                <div class="password-field">
+                    <div class="password-inputs">
+                        <input type="password" id="password" name="password" placeholder="Enter password" minlength="8" maxlength="16" required>
+                        <input type="text" id="password-text" placeholder="Enter password" minlength="8" maxlength="16">
+                    </div>
+                    <div class="show-password-container">
+                        <input type="checkbox" id="show-password" class="show-password-checkbox">
+                        <label for="show-password">Show Password</label>
+                    </div>
+                </div>
+
+                <button type="submit">Confirm</button>
+            </form>
+            <div class="back-link">
+                <a href="INDEX.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Signup form submission handler
+        function handleSignup(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            // Get form values
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            // Initialize user data
+            const userData = {
+                role: 'user',
+                username: username,
+                email: email,
+                totalScreenTime: 0,
+                websitesTimes: {}
+            };
+
+            // Save user data to localStorage
+            localStorage.setItem('navcode_user_data', JSON.stringify(userData));
+
+            // Redirect to login.html for confirmation
+            window.location.href = 'login.html';
+        }
+    </script>

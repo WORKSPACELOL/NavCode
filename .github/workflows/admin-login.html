@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Access - NAVCODE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('WEB BG.png') center/cover no-repeat fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            max-width: 400px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .admin-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-icon-symbol {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #1da1c4;
+            box-shadow: 0 0 0 3px rgba(29, 161, 196, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: white;
+            color: #1da1c4;
+            box-shadow: 0 6px 16px rgba(29, 161, 196, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            display: none;
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fadbd8;
+            border-radius: 6px;
+            border-left: 4px solid #e74c3c;
+            text-align: left;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #1da1c4;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #16a085;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .admin-card {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .admin-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .admin-icon-symbol {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-card">
+        <div class="admin-icon">
+            <span class="admin-icon-symbol">⚙</span>
+        </div>
+        <h1>Admin Access</h1>
+        <p class="subtitle">Enter your access code to continue</p>
+
+        <form id="admin-form">
+            <div class="form-group">
+                <label for="admin-code">ACCESS CODE</label>
+                <input 
+                    type="password" 
+                    id="admin-code" 
+                    name="admin-code" 
+                    placeholder="Enter access code" 
+                    required
+                >
+            </div>
+
+            <button type="submit">Verify Access</button>
+
+            <div id="error-message" class="error-message">
+                Invalid admin code. Please try again.
+            </div>
+        </form>
+
+        <div class="back-link">
+            <a href="INDEX.html">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Admin code constant
+        const ADMIN_CODE = 'CDKEY-325-2025_2026<ADMIN>';
+
+        // Form submission handler
+        document.getElementById('admin-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page refresh
+
+            // Get the entered code
+            const enteredCode = document.getElementById('admin-code').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Check if code is correct
+            if (enteredCode === ADMIN_CODE) {
+                // Hide error message
+                errorMessage.style.display = 'none';
+                
+                // Set admin role in localStorage
+                const userData = JSON.parse(localStorage.getItem('navcode_user_data')) || {
+                    role: 'admin',
+                    username: 'Admin',
+                    totalScreenTime: 0,
+                    websitesTimes: {}
+                };
+                userData.role = 'admin';
+                localStorage.setItem('navcode_user_data', JSON.stringify(userData));
+                
+                // Redirect to admin dashboard
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+                document.getElementById('admin-code').value = ''; // Clear input
+                document.getElementById('admin-code').focus(); // Focus back on input
+            }
+        });
+    </script>
+</body>
+</html>

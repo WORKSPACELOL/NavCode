@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NavCode - Learning Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2eef8 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Header with User Profile */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1da1c4;
+            letter-spacing: 2px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .welcome-content h1 {
+            font-size: 32px;
+            color: #1da1c4;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .welcome-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .motivational-section {
+            text-align: right;
+        }
+
+        .quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Label */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1da1c4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Website Grid */
+        .websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .website-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .website-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .website-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            overflow: hidden;
+        }
+
+        .website-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .website-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .website-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .website-desc {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .time-spent {
+            font-size: 11px;
+            color: #1da1c4;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            display: block;
+            margin: 40px auto 0;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            box-shadow: 0 6px 16px rgba(29, 161, 196, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Admin Dashboard Button */
+        .admin-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 12px 32px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            box-shadow: 0 6px 16px rgba(255, 152, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .welcome-banner {
+                grid-template-columns: 1fr;
+                padding: 30px;
+                gap: 20px;
+            }
+
+            .motivational-section {
+                text-align: left;
+            }
+
+            .welcome-content h1 {
+                font-size: 24px;
+            }
+
+            .websites-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 16px;
+            }
+
+            .website-image {
+                height: 140px;
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .welcome-banner {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            .welcome-content h1 {
+                font-size: 20px;
+            }
+
+            .welcome-content p {
+                font-size: 14px;
+            }
+
+            .quote {
+                font-size: 14px;
+            }
+
+            .websites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .website-image {
+                height: 120px;
+                font-size: 40px;
+            }
+
+            .section-badge {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">NavCode</div>
+        <div class="user-profile">
+            <div class="user-icon">👤</div>
+            <span class="user-label">User</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+            <div class="welcome-content">
+                <h1 id="welcome-heading">Welcome Back 👋</h1>
+                <p id="screen-time-text">You've practiced coding for 0h 0m 0s. That's amazing!</p>
+            </div>
+            <div class="motivational-section">
+                <p class="quote">"The only way to learn a new programming language is by writing programs in it."</p>
+                <p class="quote-author">— Dennis Ritchie</p>
+            </div>
+        </div>
+
+        <!-- Section Title -->
+        <div class="section-title">
+            <span class="section-badge">Learn Coding Through These Websites 💻</span>
+        </div>
+
+        <!-- Websites Grid -->
+        <div class="websites-grid" id="websites-grid">
+            <!-- JavaScript will populate this -->
+        </div>
+
+        <!-- Buttons -->
+        <div style="text-align: center;">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button id="admin-btn" class="admin-btn" onclick="goToAdminDashboard()" style="display: none;">⚙ Admin Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 NavCode. Learn coding through navigation and time tracking.</p>
+    </footer>
+
+    <script>
+        // ========== LEARNING WEBSITES DATA ==========
+        const websites = [
+            {
+                name: 'Codecademy',
+                emoji: '🎓',
+                description: 'Interactive coding lessons for Python, JavaScript, HTML, CSS, and more.',
+                url: 'https://www.codecademy.com'
+            },
+            {
+                name: 'FreeCodeCamp',
+                emoji: '📘',
+                description: 'Free coding tutorials and certifications in web development and programming.',
+                url: 'https://www.freecodecamp.org'
+            },
+            {
+                name: 'Khan Academy',
+                emoji: '🎯',
+                description: 'Video-based learning for computer science and algorithm fundamentals.',
+                url: 'https://www.khanacademy.org'
+            },
+            {
+                name: 'Codewars',
+                emoji: '⚔️',
+                description: 'Solve coding challenges and train your skills in multiple programming languages.',
+                url: 'https://www.codewars.com'
+            },
+            {
+                name: 'LeetCode',
+                emoji: '💻',
+                description: 'Coding problems and technical interview preparation platform.',
+                url: 'https://www.leetcode.com'
+            },
+            {
+                name: 'Udemy',
+                emoji: '🎬',
+                description: 'Comprehensive coding courses taught by industry professionals.',
+                url: 'https://www.udemy.com'
+            }
+        ];
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+            populateWebsites();
+            updateScreenTime();
+            checkAdminRole();
+            checkReturnedUser();
+        });
+
+        // ========== DASHBOARD INITIALIZATION ==========
+        function initializeDashboard() {
+            // Initialize localStorage if needed
+            if (!localStorage.getItem('navcode_user_data')) {
+                const userData = {
+                    role: 'user',
+                    username: 'Student',
+                    totalScreenTime: 0,
+                    websitesTimes: {}
+                };
+                localStorage.setItem('navcode_user_data', JSON.stringify(userData));
+            }
+        }
+
+        // ========== POPULATE WEBSITES GRID ==========
+        function populateWebsites() {
+            const grid = document.getElementById('websites-grid');
+            grid.innerHTML = '';
+
+            websites.forEach(website => {
+                const timeSpent = getWebsiteTime(website.name);
+                const card = document.createElement('a');
+                card.href = '#';
+                card.className = 'website-card';
+                card.onclick = (e) => {
+                    e.preventDefault();
+                    redirectToWebsite(website.name, website.url);
+                };
+
+                card.innerHTML = `
+                    <div class="website-image">${website.emoji}</div>
+                    <div class="website-info">
+                        <div>
+                            <div class="website-name">${website.name}</div>
+                            <div class="website-desc">${website.description}</div>
+                        </div>
+                        <div class="time-spent">Time spent: ${formatTime(timeSpent)}</div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ========== WEBSITE REDIRECTION WITH TIME TRACKING ==========
+        function redirectToWebsite(websiteName, url) {
+            // Start tracking time
+            const startTime = Date.now();
+            localStorage.setItem('navcode_tracking', JSON.stringify({
+                website: websiteName,
+                startTime: startTime
+            }));
+
+            // Redirect to website
+            window.location.href = url;
+        }
+
+        // ========== UPDATE WELCOME TEXT BASED ON ROLE ==========
+        function checkAdminRole() {
+            const userData = JSON.parse(localStorage.getItem('navcode_user_data'));
+            const headingElement = document.getElementById('welcome-heading');
+            const adminBtn = document.getElementById('admin-btn');
+
+            if (userData.role === 'admin') {
+                headingElement.textContent = 'Welcome Back Creator 👋';
+                adminBtn.style.display = 'block';
+            } else {
+                headingElement.textContent = `Welcome Back ${userData.username} 👋`;
+            }
+        }
+
+        // ========== UPDATE SCREEN TIME DISPLAY ==========
+        function updateScreenTime() {
+            const userData = JSON.parse(localStorage.getItem('navcode_user_data'));
+            const totalSeconds = userData.totalScreenTime;
+            const screenTimeText = document.getElementById('screen-time-text');
+
+            screenTimeText.textContent = `You've practiced coding for ${formatTime(totalSeconds)}. That's amazing!`;
+        }
+
+        // ========== FORMAT TIME (hours:minutes:seconds) ==========
+        function formatTime(milliseconds) {
+            const totalSeconds = Math.floor(milliseconds / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            return `${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        // ========== GET WEBSITE TIME ==========
+        function getWebsiteTime(websiteName) {
+            const userData = JSON.parse(localStorage.getItem('navcode_user_data'));
+            return userData.websitesTimes[websiteName] || 0;
+        }
+
+        // ========== SAVE TIME SPENT ON WEBSITE ==========
+        function saveTimeSpent(websiteName, timeSpent) {
+            const userData = JSON.parse(localStorage.getItem('navcode_user_data'));
+
+            // Update website-specific time
+            if (!userData.websitesTimes[websiteName]) {
+                userData.websitesTimes[websiteName] = 0;
+            }
+            userData.websitesTimes[websiteName] += timeSpent;
+
+            // Update total screen time
+            userData.totalScreenTime += timeSpent;
+
+            localStorage.setItem('navcode_user_data', JSON.stringify(userData));
+        }
+
+        // ========== CHECK FOR RETURNING USER ==========
+        function checkReturnedUser() {
+            const tracking = localStorage.getItem('navcode_tracking');
+            if (tracking) {
+                const trackingData = JSON.parse(tracking);
+                const endTime = Date.now();
+                const timeSpent = endTime - trackingData.startTime;
+
+                // Save time spent
+                saveTimeSpent(trackingData.website, timeSpent);
+
+                // Clear tracking data
+                localStorage.removeItem('navcode_tracking');
+
+                // Update display
+                populateWebsites();
+                updateScreenTime();
+            }
+        }
+
+        // ========== LOGOUT FUNCTION ==========
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'INDEX.html';
+            }
+        }
+
+        // ========== GO TO ADMIN DASHBOARD ==========
+        function goToAdminDashboard() {
+            window.location.href = 'admin-dashboard.html';
+        }
+    </script>
+</body>
+</html>

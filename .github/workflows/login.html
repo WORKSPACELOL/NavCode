@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Log In - NAVCODE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: url('WEB BG.png') center/cover no-repeat fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        .container {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            color: white;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .left-panel h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .left-panel p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .right-panel {
+            padding: 60px 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-panel h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #1da1c4;
+            box-shadow: 0 0 0 3px rgba(29, 161, 196, 0.1);
+        }
+
+        input:invalid {
+            border-color: #e74c3c;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #1da1c4 0%, #16a085 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            align-self: center;
+            min-width: 180px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(29, 161, 196, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #1da1c4;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #16a085;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                min-width: 100%;
+                padding: 40px 30px;
+            }
+
+            .right-panel {
+                padding: 40px 30px;
+            }
+
+            .left-panel h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                border-radius: 8px;
+            }
+
+            .left-panel {
+                padding: 30px 20px;
+            }
+
+            .right-panel {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 20px;
+            }
+
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+
+            button {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo">
+                <img src="badge.png" alt="NavCode Logo">
+            </div>
+            <h2>NavCode</h2>
+            <p>Start your coding journey with confidence. Learn programming through fun and interactive games designed for students.</p>
+        </div>
+        <div class="right-panel">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Log in to your NavCode account</p>
+            <form id="login-form">
+                <label for="email">E-MAIL</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" minlength="8" maxlength="16" required>
+
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="back-link">
+                <a href="INDEX.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Login form submission handler
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page refresh
+
+            // Get form values
+            const email = document.getElementById('email').value;
+
+            // Initialize or get user data
+            let userData = JSON.parse(localStorage.getItem('navcode_user_data')) || {
+                role: 'user',
+                username: 'Student',
+                totalScreenTime: 0,
+                websitesTimes: {}
+            };
+
+            // Set as regular user
+            userData.role = 'user';
+            userData.username = email.split('@')[0]; // Use part of email as username
+            localStorage.setItem('navcode_user_data', JSON.stringify(userData));
+
+            // Redirect to main.html
+            window.location.href = 'main.html';
+        });
+    </script>

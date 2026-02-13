@@ -1,0 +1,52 @@
+# Git Ignore Rules for NavCode Project
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE Files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# Node (if you add npm packages later)
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Build Files
+dist/
+build/
+*.zip
+
+# Environment Files
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Temp Files
+temp/
+tmp/
+*.tmp
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# System Files
+$RECYCLE.BIN/
+.Trash-*
+
+# Compiled Files
+*.pyc
+*.o
+*.class
